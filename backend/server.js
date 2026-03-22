@@ -3,6 +3,13 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
+// Import models (to register schemas)
+require("./models/Employee");
+require("./models/Project");
+require("./models/Task");
+require("./models/Assignment");
+require("./models/Timesheet");
+
 const app = express();
 
 // Middleware
@@ -21,6 +28,13 @@ mongoose
 
 // Routes
 app.use("/api/departments", require("./routes/departmentRoutes"));
+
+// Assignment Module Routes
+app.use("/api/employees", require("./routes/employeeRoutes"));
+app.use("/api/projects", require("./routes/projectRoutes"));
+app.use("/api/tasks", require("./routes/taskRoutes"));
+app.use("/api/assignments", require("./routes/assignmentRoutes"));
+app.use("/api/timesheets", require("./routes/timesheetRoutes"));
 
 // Route test đơn giản
 app.get("/api/health", (req, res) => {
