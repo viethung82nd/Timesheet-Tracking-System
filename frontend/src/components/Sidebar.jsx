@@ -57,6 +57,22 @@ function Sidebar() {
             </NavLink>
           </li>
 
+          <li className="nav-item">
+            <NavLink
+              to="/assignments"
+              className={({ isActive }) =>
+                `nav-link d-flex align-items-center px-4 py-3 fw-medium ${
+                  isActive
+                    ? "active bg-primary text-white shadow-sm"
+                    : "text-white-75 hover-bg-secondary"
+                }`
+              }
+            >
+              <i className="bi bi-clipboard-check me-3 fs-4 text-success"></i>
+              <span>Phân công công việc</span>
+            </NavLink>
+          </li>
+
           {/* Thêm mục khác sau này nếu cần */}
         </ul>
       </nav>
