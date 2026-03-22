@@ -1,0 +1,824 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+.admin-accounts {
+  --bg: #f4f2ed;
+  --panel: #ffffff;
+  --panel-alt: #f7f8fb;
+  --text: #1f2937;
+  --muted: #5b6475;
+  --border: #e2e8f0;
+  --accent: #2563eb;
+  --accent-strong: #1d4ed8;
+  --accent-soft: rgba(37, 99, 235, 0.12);
+  --teal: #0f766e;
+  --teal-soft: rgba(15, 118, 110, 0.12);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 28px;
+  padding: 32px;
+  color: var(--text);
+  background:
+    radial-gradient(900px 520px at 5% -15%, rgba(37, 99, 235, 0.12), transparent),
+    radial-gradient(720px 420px at 95% 0%, rgba(15, 118, 110, 0.12), transparent),
+    linear-gradient(135deg, #f8f6f2 0%, #eef3f8 45%, #f4f7fb 100%);
+  box-shadow: 0 28px 80px rgba(15, 23, 42, 0.08);
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  min-height: 88vh;
+  line-height: 1.5;
+}
+
+.admin-accounts::before,
+.admin-accounts::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  opacity: 0.4;
+  z-index: -1;
+  animation: floatPulse 18s ease-in-out infinite;
+}
+
+.admin-accounts::before {
+  width: 420px;
+  height: 420px;
+  top: -140px;
+  left: -140px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.18), transparent 70%);
+}
+
+.admin-accounts::after {
+  width: 360px;
+  height: 360px;
+  bottom: -160px;
+  right: -120px;
+  background: radial-gradient(circle, rgba(15, 118, 110, 0.2), transparent 70%);
+  animation-delay: -6s;
+}
+
+.admin-hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  animation: fadeUp 0.8s ease both;
+}
+
+.admin-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 12px;
+  color: rgba(31, 41, 55, 0.5);
+  margin-bottom: 6px;
+}
+
+.admin-title {
+  font-family: "Fraunces", "Times New Roman", serif;
+  font-size: clamp(28px, 3vw, 40px);
+  margin: 0 0 12px;
+}
+
+.admin-subtitle {
+  margin: 0 0 18px;
+  color: var(--muted);
+  max-width: 560px;
+}
+
+.admin-hero-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.aa-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  background: rgba(31, 41, 55, 0.06);
+  color: var(--text);
+}
+
+.aa-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+}
+
+.aa-btn.primary {
+  background: linear-gradient(120deg, #2563eb, #38bdf8);
+  color: #ffffff;
+}
+
+.aa-btn.ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.aa-btn.tiny {
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+.aa-btn.active {
+  background: var(--teal-soft);
+  border: 1px solid rgba(15, 118, 110, 0.25);
+}
+
+.aa-btn.w-100 {
+  width: 100%;
+}
+
+.admin-notice {
+  margin: 18px 0 12px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: rgba(15, 118, 110, 0.12);
+  border: 1px solid rgba(15, 118, 110, 0.25);
+  color: #0f3d38;
+  animation: fadeUp 0.4s ease both;
+}
+
+.account-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+  animation: fadeUp 0.3s ease both;
+}
+
+.account-modal-card {
+  width: min(760px, 96vw);
+  max-height: 90vh;
+  overflow: auto;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 24px 50px rgba(15, 23, 42, 0.18);
+  padding: 24px;
+  display: grid;
+  gap: 20px;
+}
+
+.account-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.account-modal-header h2 {
+  margin: 0 0 4px;
+  font-size: 20px;
+}
+
+.account-modal-header p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.account-modal-close {
+  border: none;
+  background: rgba(31, 41, 55, 0.08);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--text);
+}
+
+.account-modal-close:hover {
+  background: rgba(31, 41, 55, 0.15);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.form-field {
+  display: grid;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.form-field input,
+.form-field select {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: var(--text);
+  appearance: none;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.field-error {
+  color: #b91c1c;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.form-field select {
+  padding-right: 36px;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #6b7280 50%),
+    linear-gradient(135deg, #6b7280 50%, transparent 50%),
+    linear-gradient(to right, rgba(31, 41, 55, 0.12), rgba(31, 41, 55, 0.12));
+  background-position:
+    calc(100% - 18px) 55%,
+    calc(100% - 12px) 55%,
+    calc(100% - 32px) 50%;
+  background-size: 6px 6px, 6px 6px, 1px 18px;
+  background-repeat: no-repeat;
+}
+
+.form-field input:focus,
+.form-field select:focus {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.25);
+  outline: none;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.form-error {
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(248, 113, 113, 0.12);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  color: #991b1b;
+  font-size: 13px;
+}
+
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+  animation: fadeUp 0.6s ease both;
+}
+
+.stat-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+}
+
+.accent-blue {
+  background: rgba(37, 99, 235, 0.12);
+  color: #1d4ed8;
+}
+
+.accent-green {
+  background: rgba(22, 163, 74, 0.12);
+  color: #166534;
+}
+
+.accent-amber {
+  background: rgba(245, 158, 11, 0.14);
+  color: #92400e;
+}
+
+.stat-value {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.admin-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.search-field {
+  flex: 1;
+  min-width: 260px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 16px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+}
+
+.search-field input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  outline: none;
+}
+
+.filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.filter-label {
+  display: grid;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.filter-label select {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 6px 10px;
+  color: var(--text);
+  appearance: none;
+  padding-right: 36px;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #6b7280 50%),
+    linear-gradient(135deg, #6b7280 50%, transparent 50%),
+    linear-gradient(to right, rgba(31, 41, 55, 0.12), rgba(31, 41, 55, 0.12));
+  background-position:
+    calc(100% - 18px) 55%,
+    calc(100% - 12px) 55%,
+    calc(100% - 32px) 50%;
+  background-size: 6px 6px, 6px 6px, 1px 18px;
+  background-repeat: no-repeat;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
+}
+
+.filter-label select:focus {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.25);
+  outline: none;
+}
+
+.select-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.selection-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 16px;
+  border-radius: 14px;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  margin-bottom: 18px;
+  animation: fadeUp 0.5s ease both;
+}
+
+.selection-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.role-sections {
+  display: grid;
+  gap: 18px;
+}
+
+.role-section {
+  display: grid;
+  gap: 12px;
+  animation: fadeUp 0.6s ease both;
+}
+
+.role-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 12px;
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.08);
+}
+
+.role-header span {
+  font-size: 13px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.role-header.role-senior_manager {
+  background: linear-gradient(120deg, rgba(245, 158, 11, 0.25), rgba(251, 191, 36, 0.2));
+  color: #7c2d12;
+}
+
+.role-header.role-manager {
+  background: linear-gradient(120deg, rgba(13, 148, 136, 0.2), rgba(20, 184, 166, 0.18));
+  color: #0f3d38;
+}
+
+.role-header.role-employee {
+  background: linear-gradient(120deg, rgba(37, 99, 235, 0.18), rgba(59, 130, 246, 0.14));
+  color: #1e3a8a;
+}
+
+.role-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.user-card {
+  position: relative;
+  padding: 16px;
+  border-radius: 18px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+  animation: cardRise 0.5s ease both;
+  animation-delay: calc(var(--i) * 70ms);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.user-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+  opacity: 0;
+  transform: translateX(-30%);
+  transition: opacity 0.3s ease, transform 0.6s ease;
+  pointer-events: none;
+}
+
+.user-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.12);
+}
+
+.user-card:hover::after {
+  opacity: 0.6;
+  transform: translateX(30%);
+}
+
+.user-card.selected {
+  border-color: rgba(15, 118, 110, 0.5);
+  box-shadow: 0 0 0 1px rgba(15, 118, 110, 0.35);
+}
+
+.user-card.role-employee {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.user-card.role-manager {
+  background: #ecfdf5;
+  border-color: #99f6e4;
+}
+
+.user-card.role-senior_manager {
+  background: #fff7ed;
+  border-color: #fed7aa;
+}
+
+.user-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.select-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid rgba(15, 23, 42, 0.2);
+  background: transparent;
+  cursor: pointer;
+}
+
+.select-dot.active {
+  background: #0f766e;
+  border-color: #0f766e;
+}
+
+.status-pill {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.status-pill.active {
+  background: rgba(22, 163, 74, 0.12);
+  color: #166534;
+}
+
+.status-pill.locked {
+  background: rgba(220, 38, 38, 0.12);
+  color: #991b1b;
+}
+
+.user-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(15, 118, 110, 0.2));
+  color: #1f2937;
+}
+
+.user-card.role-employee .avatar {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(37, 99, 235, 0.35));
+  color: #1e3a8a;
+}
+
+.user-card.role-manager .avatar {
+  background: linear-gradient(135deg, rgba(15, 118, 110, 0.2), rgba(15, 118, 110, 0.35));
+  color: #0f3d38;
+}
+
+.user-card.role-senior_manager .avatar {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(161, 98, 7, 0.35));
+  color: #7c2d12;
+}
+
+.user-info {
+  display: grid;
+  gap: 4px;
+}
+
+.user-name {
+  font-weight: 600;
+}
+
+.user-email {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.user-meta {
+  display: grid;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.meta-label {
+  display: block;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 3px;
+  color: rgba(31, 41, 55, 0.45);
+}
+
+.meta-value {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.user-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: nowrap;
+}
+
+.user-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: nowrap;
+  margin-left: auto;
+}
+
+.role-select {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 600;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.role-select select {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 6px 10px;
+  color: var(--text);
+  min-width: 120px;
+  width: 100%;
+  max-width: 180px;
+  appearance: none;
+  padding-right: 36px;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #6b7280 50%),
+    linear-gradient(135deg, #6b7280 50%, transparent 50%),
+    linear-gradient(to right, rgba(31, 41, 55, 0.12), rgba(31, 41, 55, 0.12));
+  background-position:
+    calc(100% - 18px) 55%,
+    calc(100% - 12px) 55%,
+    calc(100% - 32px) 50%;
+  background-size: 6px 6px, 6px 6px, 1px 18px;
+  background-repeat: no-repeat;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
+}
+
+.role-select select:focus {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.25);
+  outline: none;
+}
+
+.role-select span {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.user-actions .aa-btn {
+  padding: 6px 10px;
+  white-space: nowrap;
+}
+
+.btn-reset {
+  background: linear-gradient(135deg, #60a5fa, #38bdf8);
+  color: #ffffff;
+  border: none;
+}
+
+.btn-lock {
+  background: linear-gradient(135deg, #fb7185, #f97316);
+  color: #ffffff;
+  border: none;
+}
+
+.btn-refresh {
+  background: linear-gradient(135deg, #34d399, #22c55e);
+  color: #ffffff;
+  border: none;
+}
+
+.btn-reset:hover,
+.btn-lock:hover,
+.btn-refresh:hover {
+  filter: brightness(1.05);
+  transform: translateY(-2px);
+}
+
+.aa-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.empty-state {
+  padding: 32px;
+  border-radius: 18px;
+  background: var(--panel);
+  border: 1px dashed var(--border);
+  text-align: center;
+  animation: fadeUp 0.5s ease both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardRise {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes floatPulse {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(12px) scale(1.02);
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-hero {
+    flex-direction: column;
+  }
+
+  .admin-hero-actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .admin-accounts {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .user-foot {
+    flex-wrap: wrap;
+  }
+
+  .user-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-accounts::before,
+  .admin-accounts::after,
+  .stat-card,
+  .user-card,
+  .role-section {
+    animation: none !important;
+  }
+
+  .aa-btn {
+    transition: none;
+  }
+
+  .user-card::after {
+    transition: none;
+  }
+}

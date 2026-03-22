@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const Department = require("../models/Department");
-const User = require("../models/User");
+const Department = require("../../models/Department");
+const User = require("../../models/User");
 const mongoose = require("mongoose");
 
 // POST /api/departments/remove

@@ -25,6 +25,16 @@ const userSchema = new mongoose.Schema({
     enum: ["senior_manager", "manager", "employee"],
     default: "employee",
   },
+  status: {
+    type: String,
+    enum: ["active", "locked"],
+    default: "active",
+  },
+  location: {
+    type: String,
+    trim: true,
+    default: "Unknown",
+  },
   department: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Department",

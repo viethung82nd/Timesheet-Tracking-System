@@ -27,7 +27,8 @@ mongoose
   });
 
 // Routes
-app.use("/api/departments", require("./routes/departmentRoutes"));
+app.use("/api/departments", require("./routes/admin/departmentRoutes"));
+app.use("/api/users", require("./routes/admin/userRoutes"));
 
 // Assignment Module Routes
 app.use("/api/employees", require("./routes/employeeRoutes"));

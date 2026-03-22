@@ -5,6 +5,7 @@ import MainLayout from "./layouts/MainLayout";
 import AddDepartment from "./components/AddDepartment";
 import DepartmentList from "./components/DepartmentList";
 import AssignPersonnel from "./components/AssignPersonnel";
+import AdminAccounts from "./components/admin/AdminAccounts";
 import AssignmentDashboard from "./components/AssignmentDashboard";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -20,6 +21,7 @@ function App() {
           <Route path="add-department" element={<AddDepartment />} />
           <Route path="assign-personnel" element={<AssignPersonnel />} />
           <Route path="departments" element={<DepartmentList />} />
+          <Route path="admin-accounts" element={<AdminAccounts />} />
           <Route path="assignments" element={<AssignmentDashboard />} />
 
           {/* Trang 404 nếu cần */}
