@@ -20,7 +20,8 @@ mongoose
   });
 
 // Routes
-app.use("/api/departments", require("./routes/departmentRoutes"));
+app.use("/api/departments", require("./routes/admin/departmentRoutes"));
+app.use("/api/users", require("./routes/admin/userRoutes"));
 
 // Route test đơn giản
 app.get("/api/health", (req, res) => {
