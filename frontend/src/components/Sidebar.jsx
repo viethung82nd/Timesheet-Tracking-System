@@ -58,6 +58,7 @@ function Sidebar() {
           <li className="nav-item">
             <NavLink
               to="/admin-accounts"
+              to="/assignments"
               className={({ isActive }) =>
                 `nav-link d-flex align-items-center px-4 py-3 fw-medium ${
                   isActive
@@ -70,6 +71,12 @@ function Sidebar() {
               <span>Quan ly tai khoan</span>
             </NavLink>
           </li>
+              <i className="bi bi-clipboard-check me-3 fs-4 text-success"></i>
+              <span>Phân công công việc</span>
+            </NavLink>
+          </li>
+
+          {/* Thêm mục khác sau này nếu cần */}
         </ul>
       </nav>
 
