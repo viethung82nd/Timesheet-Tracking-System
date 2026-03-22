@@ -169,6 +169,40 @@ router.get("/", async (req, res) => {
   }
 });
 
+// POST /api/departments/bulk-assign
+router.post("/bulk-assign", async (req, res) => {
+  try {
+    const { userIds, departmentId } = req.body;
+
+    if (!userIds || !Array.isArray(userIds) || userIds.length === 0) {
+      return res.status(400).json({ message: "Thiếu danh sách userIds" });
+    }
+
+    if (!departmentId) {
+      return res.status(400).json({ message: "Thiếu departmentId" });
+    }
+
+    const department = await Department.findById(departmentId);
+    if (!department)
+      return res.status(404).json({ message: "Không tìm thấy phòng ban" });
+
+    if (department.status === "inactive") {
+      return res
+        .status(400)
+        .json({ message: "Không thể gán vào phòng ban đang dừng hoạt động" });
+    }
+
+    await User.updateMany(
+      { _id: { $in: userIds } },
+      { $set: { department: departmentId } },
+    );
+
+    res.json({ message: `Đã gán ${userIds.length} nhân viên thành công` });
+  } catch (err) {
+    res.status(500).json({ message: "Lỗi gán hàng loạt", error: err.message });
+  }
+});
+
 // POST /api/departments/create
 // Tạo phòng ban mới
 router.post("/create", async (req, res) => {
