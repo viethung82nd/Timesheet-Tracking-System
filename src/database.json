@@ -1,0 +1,165 @@
+﻿{
+  "employees": [
+    {
+      "emp_id": 1,
+      "username": "nminh",
+      "password_hash": "hash_01",
+      "email": "minh.nguyen@company.com",
+      "phone": "0901000111",
+      "full_name": "Nguyen Minh",
+      "status": "active",
+      "created_at": "2026-03-10T08:30:00Z"
+    },
+    {
+      "emp_id": 2,
+      "username": "tthu",
+      "password_hash": "hash_02",
+      "email": "thu.tran@company.com",
+      "phone": "0901000222",
+      "full_name": "Tran Thu",
+      "status": "active",
+      "created_at": "2026-03-12T09:15:00Z"
+    },
+    {
+      "emp_id": 3,
+      "username": "lanh",
+      "password_hash": "hash_03",
+      "email": "anh.le@company.com",
+      "phone": "0901000333",
+      "full_name": "Le Anh",
+      "status": "inactive",
+      "created_at": "2026-03-15T07:45:00Z"
+    }
+  ],
+  "locations": [
+    {
+      "location_id": 1,
+      "name": "Head Office",
+      "ip_map": "10.0.0.0/24",
+      "address": "123 Le Loi, HCMC",
+      "is_active": true
+    },
+    {
+      "location_id": 2,
+      "name": "Branch Ha Noi",
+      "ip_map": "10.0.2.0/24",
+      "address": "45 Tran Hung Dao, Ha Noi",
+      "is_active": true
+    }
+  ],
+  "attendance": [
+    {
+      "attendance_id": 101,
+      "emp_id": 1,
+      "date": "2026-03-19",
+      "checkin_time": "08:05",
+      "checkout_time": "16:02",
+      "location_id": 1,
+      "checkin_image_url": "https://example.com/checkin/101.jpg",
+      "checkout_image_url": "https://example.com/checkout/101.jpg",
+      "is_locked": false
+    },
+    {
+      "attendance_id": 102,
+      "emp_id": 2,
+      "date": "2026-03-19",
+      "checkin_time": "16:00",
+      "checkout_time": "00:05",
+      "location_id": 2,
+      "checkin_image_url": "https://example.com/checkin/102.jpg",
+      "checkout_image_url": "https://example.com/checkout/102.jpg",
+      "is_locked": false
+    }
+  ],
+  "attendance_locks": [
+    {
+      "lock_id": 1,
+      "locked_by": 1,
+      "locked_at": "2026-03-01T00:30:00Z",
+      "month": 3,
+      "year": 2026
+    }
+  ],
+  "attendance_disputes": [
+    {
+      "dispute_id": 1,
+      "attendance_id": 101,
+      "emp_id": 1,
+      "status": "pending",
+      "manager_comment": "",
+      "reason": "Quên chấm công ra ca.",
+      "created_at": "2026-03-20T04:00:00Z",
+      "manager_id": 1
+    }
+  ],
+  "shift_change_requests": [
+    {
+      "id": 1,
+      "emp_id": 1,
+      "date": "2026-03-20",
+      "from_shift": "morning",
+      "to_shift": "evening",
+      "reason": "Bận học buổi sáng.",
+      "status": "pending",
+      "created_at": "2026-03-19T03:15:00Z"
+    },
+    {
+      "id": 2,
+      "emp_id": 2,
+      "date": "2026-03-21",
+      "from_shift": "evening",
+      "to_shift": "morning",
+      "reason": "Đổi lịch chăm con.",
+      "status": "approved",
+      "created_at": "2026-03-19T05:20:00Z"
+    }
+  ],
+  "leave_requests": [
+    {
+      "request_id": 1,
+      "emp_id": 1,
+      "start_date": "2026-03-25",
+      "end_date": "2026-03-26",
+      "leave_type": "annual",
+      "status": "approved",
+      "days_count": 2,
+      "reason": "Nghỉ phép năm.",
+      "created_at": "2026-03-18T01:30:00Z"
+    }
+  ],
+  "leave_balance": [
+    {
+      "leave_balance_id": 1,
+      "year": 2026,
+      "emp_id": 1,
+      "leave_type": "annual",
+      "total_days": 12,
+      "used_days": 2
+    },
+    {
+      "leave_balance_id": 2,
+      "year": 2026,
+      "emp_id": 2,
+      "leave_type": "annual",
+      "total_days": 12,
+      "used_days": 1
+    }
+  ],
+  "managers": [
+    {
+      "manager_id": 1,
+      "username": "manager_01",
+      "full_name": "Manager One",
+      "email": "manager@company.com",
+      "status": "active"
+    }
+  ],
+  "admins": [
+    {
+      "admin_id": 1,
+      "username": "admin_01",
+      "full_name": "Admin One",
+      "status": "active"
+    }
+  ]
+}
